@@ -1,0 +1,12 @@
+{
+  "title": "合租主卧改造",
+  "budget_cap": 800,
+  "items": [
+    {"name": "暖光 LED 灯带 5m", "price_low": 25, "price_high": 40, "qty": 2, "tier": "A", "damage": "L1", "portable": true, "channel": "拼多多", "purpose": "主氛围光源"},
+    {"name": "免打孔遮光窗帘", "price_low": 80, "price_high": 150, "qty": 1, "tier": "A", "damage": "L2", "portable": true, "channel": "淘宝", "purpose": "遮光+定调"},
+    {"name": "奶油色水洗棉四件套", "price": 150, "qty": 1, "tier": "A", "damage": "L0", "portable": true, "channel": "拼多多", "purpose": "60% 视觉主色"},
+    {"name": "短绒地毯 1.2×1.6m", "price_low": 80, "price_high": 180, "qty": 1, "tier": "B", "damage": "L0", "portable": true, "channel": "闲鱼", "purpose": "划定专属区"},
+    {"name": "顶天立地置物架", "price": 260, "qty": 1, "tier": "C", "damage": "L2", "portable": false, "channel": "淘宝", "purpose": "角落收纳"},
+    {"name": "打孔挂画", "price": 60, "qty": 2, "tier": "C", "damage": "L3", "portable": true, "channel": "淘宝", "purpose": "个人痕迹"}
+  ]
+}

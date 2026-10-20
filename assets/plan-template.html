@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>合租房改造方案</title>
+<style>
+  :root{
+    --bg:#F7F5F1; --card:#FFFFFF; --ink:#2B2926; --ink-2:#6B6660; --ink-3:#9A948C;
+    --line:#E7E2DA; --accent:#B07D4A; --accent-soft:#F5EDE3;
+    --green:#4A7C59; --green-soft:#EAF2EC;
+    --blue:#4A6B8A; --blue-soft:#EAEFF4;
+    --warn:#B4553C; --warn-soft:#FBEDEA;
+    --radius:14px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;
+    line-height:1.7; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px; margin:0 auto; padding:40px 24px 72px}
+  header.hero{
+    background:linear-gradient(135deg,#FFFFFF 0%,#F5EFE6 100%);
+    border:1px solid var(--line); border-radius:var(--radius);
+    padding:32px 28px; margin-bottom:28px;
+  }
+  header.hero .eyebrow{font-size:13px; letter-spacing:.12em; color:var(--accent); margin-bottom:8px}
+  header.hero h1{margin:0 0 8px; font-size:28px; letter-spacing:-.01em}
+  header.hero p.sub{margin:0; color:var(--ink-2); font-size:15px}
+  .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:18px}
+  .chip{background:#fff; border:1px solid var(--line); border-radius:999px; padding:5px 14px; font-size:13px; color:var(--ink-2)}
+  .chip b{color:var(--ink); font-weight:600}
+
+  h2{font-size:19px; margin:36px 0 14px; padding-left:12px; border-left:4px solid var(--accent)}
+  h3{font-size:15px; margin:20px 0 8px; color:var(--ink)}
+  p{margin:0 0 12px}
+
+  .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:20px 22px; margin-bottom:16px}
+  .grid{display:grid; gap:14px}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:760px){.g2,.g3,.g4{grid-template-columns:1fr}}
+
+  .kv{display:flex; justify-content:space-between; gap:12px; padding:7px 0; border-bottom:1px dashed var(--line); font-size:14px}
+  .kv:last-child{border-bottom:none}
+  .kv span:first-child{color:var(--ink-3)}
+  .kv span:last-child{text-align:right; font-weight:500}
+
+  .tag{display:inline-block; font-size:12px; padding:2px 9px; border-radius:6px; margin-right:6px; vertical-align:middle}
+  .t-l0{background:var(--green-soft); color:var(--green)}
+  .t-l1{background:var(--blue-soft); color:var(--blue)}
+  .t-l2{background:var(--accent-soft); color:var(--accent)}
+  .t-l3{background:var(--warn-soft); color:var(--warn)}
+  .t-star{background:#FFF6E5; color:#8A6A22}
+
+  ul.clean{margin:0; padding-left:18px}
+  ul.clean li{margin-bottom:8px; font-size:14.5px}
+  ol.steps{margin:0; padding-left:20px}
+  ol.steps li{margin-bottom:10px}
+
+  table{width:100%; border-collapse:collapse; font-size:14px; background:#fff}
+  th,td{padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top}
+  th{background:#FAF8F5; font-weight:600; font-size:13px; color:var(--ink-2)}
+  tr:last-child td{border-bottom:none}
+  td.num{text-align:right; white-space:nowrap}
+  tfoot td{background:#FAF8F5; font-weight:600}
+
+  .budget{display:grid; gap:10px; margin-top:6px}
+  .bar{display:flex; align-items:center; gap:12px; font-size:14px}
+  .bar .lab{width:92px; color:var(--ink-2); flex:none}
+  .bar .track{flex:1; height:22px; background:#F0ECE5; border-radius:6px; overflow:hidden}
+  .bar .fill{height:100%; background:var(--accent); border-radius:6px}
+  .bar .val{width:118px; text-align:right; flex:none; font-variant-numeric:tabular-nums}
+
+  .timeline{position:relative; padding-left:26px}
+  .timeline::before{content:""; position:absolute; left:7px; top:6px; bottom:6px; width:2px; background:var(--line)}
+  .tl{position:relative; margin-bottom:20px}
+  .tl::before{content:""; position:absolute; left:-24px; top:7px; width:10px; height:10px; border-radius:50%; background:var(--accent); border:2px solid #fff}
+  .tl h4{margin:0 0 4px; font-size:15px}
+  .tl p{margin:0; font-size:14px; color:var(--ink-2)}
+
+  .note{background:var(--accent-soft); border:1px solid #EBDCC9; border-radius:10px; padding:14px 16px; font-size:14px; color:#6B5334}
+  .note.warn{background:var(--warn-soft); border-color:#F0D9D2; color:#7C3A28}
+  .note.ok{background:var(--green-soft); border-color:#D8E7DC; color:#33604A}
+
+  .plan{width:100%; height:auto; background:#fff; border:1px solid var(--line); border-radius:10px}
+  .plan-cap{font-size:13px; color:var(--ink-3); margin-top:8px; text-align:center}
+
+  footer{margin-top:40px; padding-top:20px; border-top:1px solid var(--line); font-size:13px; color:var(--ink-3)}
+
+  @media print{ body{background:#fff} .card,.wrap{padding:0} header.hero{padding:20px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ 1. 头部：改成用户房间信息 ============ -->
+  <header class="hero">
+    <div class="eyebrow">RENTAL ROOM MAKEOVER · 合租房改造方案</div>
+    <h1>{{房间主题名}} · {{风格}}方案</h1>
+    <p class="sub">{{一句话定位，例如：8㎡ 朝北小次卧，用 700 元做出有归属感的暖调单人空间}}</p>
+    <div class="chips">
+      <span class="chip">面积 <b>{{约 8 ㎡}}</b></span>
+      <span class="chip">朝向 <b>{{北向 / 采光 C}}</b></span>
+      <span class="chip">租期 <b>{{12 个月}}</b></span>
+      <span class="chip">预算 <b>{{¥700}}</b></span>
+      <span class="chip">改造等级 <b>{{L0–L2 免打孔}}</b></span>
+    </div>
+  </header>
+
+  <!-- ============ 2. 房间档案 ============ -->
+  <h2>一、房间档案</h2>
+  <div class="card">
+    <div class="grid g2">
+      <div>
+        <div class="kv"><span>面积 / 层高</span><span>{{约 8㎡ / 2.7m}}</span></div>
+        <div class="kv"><span>形状</span><span>{{矩形}}</span></div>
+        <div class="kv"><span>朝向 · 采光</span><span>{{北向 · C 级}}</span></div>
+        <div class="kv"><span>通风</span><span>{{一般，单窗无对流}}</span></div>
+        <div class="kv"><span>门窗关系</span><span>{{门不正对床，无穿堂}}</span></div>
+      </div>
+      <div>
+        <div class="kv"><span>地面 / 墙面</span><span>{{米黄瓷砖 / 乳胶漆}}</span></div>
+        <div class="kv"><span>固定家具</span><span>{{1.5m 床架、旧衣柜}}</span></div>
+        <div class="kv"><span>插座</span><span>{{3 个，均在门侧}}</span></div>
+        <div class="kv"><span>墙体类型</span><span>{{实墙，可贴可挂}}</span></div>
+        <div class="kv"><span>主要缺陷</span><span>{{无主灯位、插座少、地面旧}}</span></div>
+      </div>
+    </div>
+    <div class="note" style="margin-top:14px">面积为估算值（误差 ±10%），基于照片中 {{参照物}} 推算。{{待确认项}}</div>
+  </div>
+
+  <!-- ============ 3. 诊断 ============ -->
+  <h2>二、问题诊断</h2>
+  <div class="grid g2">
+    <div class="card">
+      <h3>① {{问题标题}}</h3>
+      <p style="font-size:14px;color:var(--ink-2);margin:0">现状：{{描述}} —— 影响：{{生理/心理层面}} </p>
+    </div>
+    <div class="card">
+      <h3>② {{问题标题}}</h3>
+      <p style="font-size:14px;color:var(--ink-2);margin:0">现状：{{描述}} —— 影响：{{...}}</p>
+    </div>
+    <div class="card">
+      <h3>③ {{问题标题}}</h3>
+      <p style="font-size:14px;color:var(--ink-2);margin:0">现状：{{描述}} —— 影响：{{...}}</p>
+    </div>
+    <div class="card">
+      <h3>④ {{问题标题}}</h3>
+      <p style="font-size:14px;color:var(--ink-2);margin:0">现状：{{描述}} —— 影响：{{...}}</p>
+    </div>
+  </div>
+
+  <!-- ============ 4. 格局示意（按需替换 SVG 坐标与标签） ============ -->
+  <h2>三、格局与布局</h2>
+  <div class="card">
+    <div class="grid g2">
+      <div>
+        <h3 style="margin-top:0">现状</h3>
+        <svg class="plan" viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="420" height="300" fill="#FFFFFF"/>
+          <rect x="30" y="30" width="360" height="240" fill="#FBF9F6" stroke="#2B2926" stroke-width="3"/>
+          <!-- 窗 -->
+          <line x1="100" y1="30" x2="220" y2="30" stroke="#4A6B8A" stroke-width="7"/>
+          <text x="160" y="20" font-size="12" fill="#4A6B8A" text-anchor="middle">窗</text>
+          <!-- 门 -->
+          <line x1="30" y1="180" x2="30" y2="250" stroke="#B07D4A" stroke-width="7"/>
+          <path d="M30 250 A40 40 0 0 1 70 210" fill="none" stroke="#B07D4A" stroke-width="2" stroke-dasharray="4 3"/>
+          <text x="20" y="215" font-size="12" fill="#B07D4A" text-anchor="end">门</text>
+          <!-- 家具 -->
+          <rect x="230" y="150" width="150" height="110" rx="6" fill="#EDE4D8" stroke="#B07D4A" stroke-width="2"/>
+          <text x="305" y="210" font-size="13" fill="#6B5334" text-anchor="middle">床 1.5m</text>
+          <rect x="40" y="40" width="60" height="100" rx="4" fill="#E7E2DA" stroke="#9A948C" stroke-width="2"/>
+          <text x="70" y="95" font-size="12" fill="#6B6660" text-anchor="middle">衣柜</text>
+          <circle cx="60" cy="270" r="5" fill="#4A7C59"/>
+          <text x="70" y="274" font-size="11" fill="#4A7C59">插座</text>
+        </svg>
+        <div class="plan-cap">现状：床靠窗、插座远离工作区、无分区</div>
+      </div>
+      <div>
+        <h3 style="margin-top:0">改造后</h3>
+        <svg class="plan" viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="420" height="300" fill="#FFFFFF"/>
+          <rect x="30" y="30" width="360" height="240" fill="#FBF9F6" stroke="#2B2926" stroke-width="3"/>
+          <line x1="100" y1="30" x2="220" y2="30" stroke="#4A6B8A" stroke-width="7"/>
+          <text x="160" y="20" font-size="12" fill="#4A6B8A" text-anchor="middle">窗 + 遮光帘</text>
+          <line x1="30" y1="180" x2="30" y2="250" stroke="#B07D4A" stroke-width="7"/>
+          <path d="M30 250 A40 40 0 0 1 70 210" fill="none" stroke="#B07D4A" stroke-width="2" stroke-dasharray="4 3"/>
+          <text x="20" y="215" font-size="12" fill="#B07D4A" text-anchor="end">门</text>
+          <!-- 床移到实墙侧 -->
+          <rect x="230" y="40" width="110" height="150" rx="6" fill="#F5EDE3" stroke="#B07D4A" stroke-width="2"/>
+          <text x="285" y="118" font-size="13" fill="#6B5334" text-anchor="middle">床（靠实墙）</text>
+          <!-- 工作区靠窗 -->
+          <rect x="110" y="40" width="100" height="50" rx="4" fill="#EAEFF4" stroke="#4A6B8A" stroke-width="2"/>
+          <text x="160" y="70" font-size="12" fill="#2F4B66" text-anchor="middle">书桌（面门）</text>
+          <!-- 地毯与角落 -->
+          <rect x="120" y="150" width="100" height="90" rx="4" fill="#EAF2EC" stroke="#4A7C59" stroke-width="2"/>
+          <text x="170" y="200" font-size="12" fill="#33604A" text-anchor="middle">地毯 · 治愈角</text>
+        </svg>
+        <div class="plan-cap">改造：床头靠实墙、工作区就光、地面划出专属区</div>
+      </div>
+    </div>
+    <div class="note ok" style="margin-top:14px"><b>备选方案：</b>{{例如床横放 —— 优点：动线更宽；缺点：床头只能靠窗，需加厚床头板 + 遮光帘补偿。}}</div>
+  </div>
+
+  <!-- ============ 5. 分区设计 ============ -->
+  <h2>四、分区设计</h2>
+  <div class="grid g2">
+    <div class="card">
+      <h3 style="margin-top:0">🛏 睡眠区</h3>
+      <ul class="clean">
+        <li>{{床头靠 {{东}} 实墙，避开梁下}}</li>
+        <li>{{床品换成奶油色水洗棉，唯一大面积色彩}}</li>
+        <li>{{床下放带盖收纳箱，清空杂物}}</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">💻 工作区</h3>
+      <ul class="clean">
+        <li>{{桌靠窗侧放，背靠实墙，能看见门}}</li>
+        <li>{{桌面到墙留 30cm，贴一张远景照片}}</li>
+        <li>{{4000K 屏幕挂灯 + 桌下理线槽}}</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">☕ 治愈角落</h3>
+      <ul class="clean">
+        <li>{{0.6㎡：一把椅子 + 边几 + 落地灯}}</li>
+        <li>{{这是"归属感"最直接来源，务必留出来}}</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">📦 收纳区</h3>
+      <ul class="clean">
+        <li>{{床下箱 + 门后挂袋 + 顶天立地架}}</li>
+        <li>{{原则：先"藏"再"买"，杂物不落地}}</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============ 6. 风水调整 ============ -->
+  <h2>五、风水与环境调整</h2>
+  <div class="card">
+    <table>
+      <thead>
+        <tr><th style="width:56px">优先级</th><th>现象</th><th>为什么真的会不舒服</th><th>化解（可逆）</th><th style="width:120px">成本</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tag t-l3">P0</span></td>
+          <td>{{床正对房门}}</td>
+          <td>{{睡着时正面有开口，潜意识警觉，睡眠变浅；走廊灯光与脚步直冲}}</td>
+          <td>{{床侧移 40cm；移不动加门帘或 1.2m 屏风}} <span class="tag t-l0">L0</span></td>
+          <td>¥0–150</td>
+        </tr>
+        <tr>
+          <td><span class="tag t-l2">P1</span></td>
+          <td>{{床头靠窗}}</td>
+          <td>{{背后是空的＋凌晨光线噪声}}</td>
+          <td>{{加厚床头板 + 遮光帘 + 床头矮书墙}} <span class="tag t-l2">L2</span></td>
+          <td>¥80–200</td>
+        </tr>
+        <tr>
+          <td><span class="tag t-l1">P1</span></td>
+          <td>{{梁压床顶}}</td>
+          <td>{{视觉压迫感，躺下即见}}</td>
+          <td>{{梁下挂一层浅色布幔弱化}} <span class="tag t-l1">L1</span></td>
+          <td>¥30–60</td>
+        </tr>
+        <tr>
+          <td><span class="tag t-l0">P2</span></td>
+          <td>{{财位堆杂物}}</td>
+          <td>{{每天看到乱的角落，心境也乱}}</td>
+          <td>{{入户对角角落清空 + 放金钱树 + 一盏小灯}} <span class="tag t-l0">L0</span></td>
+          <td>¥50–120</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note warn" style="margin-top:14px">风水内容属于传统居住习俗与环境心理学的结合参考，不涉及任何运势承诺。真正影响居住体验的是采光、通风、噪音、动线与整洁度 —— 这些优先解决，风水调整作为补充。</div>
+  </div>
+
+  <!-- ============ 7. 采购清单 ============ -->
+  <h2>六、采购清单</h2>
+  <div class="card">
+    <table>
+      <thead>
+        <tr><th>物品</th><th class="num">单价</th><th class="num">数量</th><th class="num">小计</th><th>等级</th><th>带走</th><th>作用</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>{{暖光 LED 灯带 5m}}</td><td class="num">¥25–40</td><td class="num">2</td><td class="num">¥50–80</td><td><span class="tag t-l1">L1</span></td><td><span class="tag t-star">★</span></td><td>主氛围光源</td></tr>
+        <tr><td>{{免打孔遮光窗帘}}</td><td class="num">¥80–150</td><td class="num">1</td><td class="num">¥80–150</td><td><span class="tag t-l2">L2</span></td><td><span class="tag t-star">★</span></td><td>遮光 + 定调</td></tr>
+        <tr><td>{{奶油色水洗棉四件套}}</td><td class="num">¥120–200</td><td class="num">1</td><td class="num">¥120–200</td><td><span class="tag t-l0">L0</span></td><td><span class="tag t-star">★</span></td><td>60% 视觉主色</td></tr>
+        <tr><td>{{短绒地毯 1.2×1.6m}}</td><td class="num">¥80–180</td><td class="num">1</td><td class="num">¥80–180</td><td><span class="tag t-l0">L0</span></td><td><span class="tag t-star">★</span></td><td>划定专属区</td></tr>
+        <tr><td>{{落地灯（三档色温）}}</td><td class="num">¥90–180</td><td class="num">1</td><td class="num">¥90–180</td><td><span class="tag t-l0">L0</span></td><td><span class="tag t-star">★</span></td><td>替代顶灯</td></tr>
+        <tr><td>{{床下收纳箱}}</td><td class="num">¥30–60</td><td class="num">2</td><td class="num">¥60–120</td><td><span class="tag t-l0">L0</span></td><td><span class="tag t-star">★</span></td><td>清空床下</td></tr>
+        <tr><td>{{绿植 + 花盆}}</td><td class="num">¥30–80</td><td class="num">2</td><td class="num">¥60–160</td><td><span class="tag t-l0">L0</span></td><td><span class="tag t-star">★</span></td><td>财位 + 生气</td></tr>
+        <tr><td>{{无火香薰}}</td><td class="num">¥35–80</td><td class="num">1</td><td class="num">¥35–80</td><td><span class="tag t-l0">L0</span></td><td><span class="tag t-star">★</span></td><td>气味锚点</td></tr>
+        <tr><td>{{明信片 / 照片墙套装}}</td><td class="num">¥25–60</td><td class="num">1</td><td class="num">¥25–60</td><td><span class="tag t-l1">L1</span></td><td><span class="tag t-star">★</span></td><td>个人痕迹</td></tr>
+        <tr><td>{{门帘}}</td><td class="num">¥35–80</td><td class="num">1</td><td class="num">¥35–80</td><td><span class="tag t-l2">L2</span></td><td><span class="tag t-star">★</span></td><td>挡门冲</td></tr>
+      </tbody>
+      <tfoot>
+        <tr><td colspan="3">合计</td><td class="num">¥635–1290</td><td colspan="3">可带走 100% · 最高破坏等级 L2（免打孔）</td></tr>
+      </tfoot>
+    </table>
+
+    <h3 style="margin-top:20px">预算分档</h3>
+    <div class="budget">
+      <div class="bar"><span class="lab">A 急救包</span><span class="track"><span class="fill" style="width:32%"></span></span><span class="val">¥200–300</span></div>
+      <div class="bar"><span class="lab">B 舒适包</span><span class="track"><span class="fill" style="width:60%"></span></span><span class="val">¥500–800</span></div>
+      <div class="bar"><span class="lab">C 进阶包</span><span class="track"><span class="fill" style="width:85%"></span></span><span class="val">¥1000–1500</span></div>
+    </div>
+    <div class="note" style="margin-top:14px">按优先级下单：灯光 → 窗帘 → 床品 → 地毯 → 收纳 → 绿植 → 装饰。预算不足时从后往前砍。价格为参考区间，实际以购买时为准。</div>
+  </div>
+
+  <!-- ============ 8. 分期执行 ============ -->
+  <h2>七、执行计划</h2>
+  <div class="card">
+    <div class="timeline">
+      <div class="tl">
+        <h4>Day 1 · 不花钱也能做的（0 元）</h4>
+        <p>{{清空床下与地面杂物、床挪到靠实墙、床头不正对门和镜、桌面只留常用物、垃圾全部清走。做完：房间已经能看了。}}</p>
+      </div>
+      <div class="tl">
+        <h4>Week 1 · 到货安装（A + B 档）</h4>
+        <p>{{灯带贴床底与柜顶 → 装遮光帘 → 换四件套 → 铺地毯 → 摆绿植 → 门帘。做完：晚上不再开顶灯，房间有了主色调。}}</p>
+      </div>
+      <div class="tl">
+        <h4>Month 1 · 慢慢添（C 档）</h4>
+        <p>{{落地灯、照片墙、香薰、顶天立地架、治愈角落的椅子。做完：有个人痕迹，有味道，有声音 —— 这才是"家"。}}</p>
+      </div>
+      <div class="tl">
+        <h4>退租前 · 复原</h4>
+        <p>{{摘装饰 → 除胶剂除痕 → 补墙膏补孔 → 同色漆点涂 → 拆架 → 家具归位（按入住当天拍的照片）。成本约 ¥50。}}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 9. 复原清单 ============ -->
+  <h2>八、退租复原清单</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>改动</th><th>复原方式</th><th class="num">成本</th></tr></thead>
+      <tbody>
+        <tr><td>无痕胶条挂画</td><td>垂直下拉胶条，残留用酒精擦拭</td><td class="num">¥10</td></tr>
+        <tr><td>免钉胶置物架</td><td>美工刀切入 + 除胶剂 + 补墙膏点补</td><td class="num">¥30</td></tr>
+        <tr><td>伸缩帘杆</td><td>旋松取下，无痕</td><td class="num">¥0</td></tr>
+        <tr><td>顶天立地架</td><td>泄压取下，顶部可能留压痕（垫一块布预防）</td><td class="num">¥0</td></tr>
+        <tr><td>PVC 墙纸 / 地板贴</td><td>吹风机加热后慢撕，残胶用除胶剂</td><td class="num">¥40</td></tr>
+        <tr><td>换吸顶灯 / 花洒</td><td>装回原件（务必保留）</td><td class="num">¥0</td></tr>
+      </tbody>
+    </table>
+    <div class="note" style="margin-top:14px">入住当天先拍一圈照片存证，退租时按图复原，押金纠纷直接少一半。</div>
+  </div>
+
+  <footer>
+    本方案遵循：低预算 · 免破坏 · 可带走 · 风水仅作环境参考。所有价格区间随城市与平台浮动。<br>
+    生成于 {{日期}} · renter-room-makeover
+  </footer>
+
+</div>
+</body>
+</html>
