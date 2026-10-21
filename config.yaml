@@ -1,0 +1,113 @@
+# 合租房改造设计优化版配置
+
+name: renter-room-makeover-optimized
+version: "2.0.0"
+description: "合租房低成本改造设计 - 适配主流大模型应用"
+
+# 模型配置
+models:
+  default: "gpt-4"
+  supported:
+    - "gpt-4"
+    - "gpt-3.5-turbo"
+    - "claude-3-sonnet"
+    - "claude-3-haiku"
+    - "gemini-pro"
+    - "deepseek-chat"
+
+# 输出配置
+output:
+  formats:
+    - "markdown"
+    - "structured_json"
+    - "html"
+    - "api_response"
+  default_format: "markdown"
+
+# 预算配置
+budget:
+  default_cap: 800
+  tiers:
+    A: "急救包 (< ¥200)"
+    B: "舒适包 (¥200-500)"
+    C: "进阶包 (¥500-800)"
+    D: "大改 (> ¥800)"
+
+# 破坏等级配置
+damage_levels:
+  L0: "纯摆放 (0风险)"
+  L1: "可逆粘贴 (低风险)"
+  L2: "免打孔支撑 (中风险)"
+  L3: "微损改造 (高风险，需房东同意)"
+
+# 工作流配置
+workflow:
+  stages:
+    - "信息采集"
+    - "房间分析"
+    - "问题诊断"
+    - "方案生成"
+    - "输出交付"
+    - "跟进优化"
+  
+  adaptive: true
+  progressive_disclosure: true
+  error_recovery: true
+
+# 性能配置
+performance:
+  cache_enabled: true
+  cache_ttl: 3600  # 1小时
+  streaming_enabled: true
+  parallel_processing: true
+  memory_optimization: true
+
+# 集成配置
+integrations:
+  kirocrew:
+    enabled: true
+    tools:
+      - "photo_analysis"
+      - "budget_calculator"
+      - "layout_generator"
+      - "fengshui_checker"
+    
+  langchain:
+    enabled: true
+    adapter: "langchain_adapter.py"
+    
+  autogen:
+    enabled: true
+    adapter: "autogen_adapter.py"
+
+# 监控配置
+monitoring:
+  metrics_enabled: true
+  logging_level: "INFO"
+  error_tracking: true
+  performance_tracking: true
+
+# 提示模板配置
+prompts:
+  system_prompts_dir: "./prompts/system"
+  user_prompts_dir: "./prompts/user"
+  response_templates_dir: "./prompts/responses"
+  
+  templates:
+    openai: "openai_system.md"
+    claude: "claude_system.md"
+    gemini: "gemini_system.md"
+    deepseek: "deepseek_system.md"
+
+# 数据Schema配置
+schemas:
+  room_analysis: "./schemas/room_schema.json"
+  renovation_plan: "./schemas/plan_schema.json"
+  purchase_list: "./schemas/purchase_schema.json"
+
+# 测试配置
+testing:
+  unit_tests: "./tests/unit"
+  integration_tests: "./tests/integration"
+  performance_tests: "./tests/performance"
+  compatibility_tests: "./tests/compatibility"
