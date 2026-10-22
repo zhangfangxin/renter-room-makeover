@@ -1,5 +1,7 @@
 # renter-room-makeover 🏠
 
+<img src="assets/icon.svg" width="96" align="right" alt="icon">
+
 一个给**城市合租打工人**用的房间改造设计 Skills。
 
 你拍几张房间照片发过去，它帮你读出格局、诊断问题、给出改造方案——

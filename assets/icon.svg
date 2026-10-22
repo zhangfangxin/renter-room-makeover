@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="renter-room-makeover 图标">
+  <title>renter-room-makeover</title>
+  <desc>焦糖底上一个白色小屋，窗户透出暖光，屋檐挂一圈串灯，屋旁一盆绿植——象征低成本、有温度的合租房改造</desc>
+  <rect x="16" y="16" width="480" height="480" rx="120" fill="#C9905A"/>
+  <rect x="112" y="232" width="288" height="208" rx="44" fill="#FFFFFF"/>
+  <path d="M256 92 L432 236 L80 236 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="26" stroke-linejoin="round"/>
+  <path d="M136 262 Q256 292 376 262" fill="none" stroke="#D9A96B" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="136" cy="262" r="9" fill="#FFD98A" stroke="#E9A23B" stroke-width="3"/>
+  <circle cx="196" cy="279" r="9" fill="#FFD98A" stroke="#E9A23B" stroke-width="3"/>
+  <circle cx="256" cy="279" r="9" fill="#FFD98A" stroke="#E9A23B" stroke-width="3"/>
+  <circle cx="316" cy="279" r="9" fill="#FFD98A" stroke="#E9A23B" stroke-width="3"/>
+  <circle cx="376" cy="262" r="9" fill="#FFD98A" stroke="#E9A23B" stroke-width="3"/>
+  <rect x="188" y="296" width="136" height="88" rx="24" fill="#FFBE66" stroke="#E9A23B" stroke-width="4"/>
+  <line x1="256" y1="296" x2="256" y2="384" stroke="#FFF3D6" stroke-width="8"/>
+  <line x1="188" y1="340" x2="324" y2="340" stroke="#FFF3D6" stroke-width="8"/>
+  <rect x="228" y="396" width="56" height="44" rx="14" fill="#A96B3E"/>
+  <path d="M376 436 L428 436 L418 462 L386 462 Z" fill="#FFFFFF"/>
+  <path d="M402 436 C390 400 398 386 412 392 C418 406 416 426 410 436 Z" fill="#4A7C59"/>
+  <path d="M402 436 C414 406 426 400 432 410 C430 426 418 434 410 436 Z" fill="#5C8E6A"/>
+  <path d="M402 436 C386 410 380 402 390 396 C400 392 406 412 404 436 Z" fill="#3E6B4F"/>
+</svg>
