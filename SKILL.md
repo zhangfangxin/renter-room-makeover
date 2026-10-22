@@ -1,6 +1,13 @@
 ---
 name: renter-room-makeover
-description: 合租房/出租房低成本改造设计。当用户提到租房改造、出租房布置、合租房房间设计、租房归属感、低成本软装、免打孔改造、租房风水、房间格局分析，或上传了出租屋/卧室照片希望获得布置、收纳、氛围或改造建议时使用。基于照片解读户型与格局，输出低预算、可逆免破坏、兼顾风水与环境心理学的分区改造方案、采购清单与分期执行计划；并能基于照片生成逼真的改造后效果图（内置生成工具直接出图，或按用户指定的平台输出多模型通用提示词）。
+display_name: 合租房改造设计师
+display_name_en: Rental Room Makeover
+description: 面向城市合租/出租房人群的房间改造设计技能。当用户提到租房改造、出租房布置、合租房房间设计、租房归属感、低成本软装、免打孔改造、租房风水、房间格局分析，或上传了出租屋/卧室照片希望获得布置、收纳、氛围或改造建议时使用。基于照片解读户型与格局，输出低预算、可逆免破坏、兼顾风水与环境心理学的分区改造方案、采购清单与执行计划，并能基于照片生成逼真的改造后效果图（内置生成工具直接出图，或按用户指定的平台输出多模型通用提示词）。
+description_zh: 拍张房间照片，帮你诊断格局、生成低预算免打孔的改造方案，还能直接渲染改造后的效果图，让出租屋也有归属感。
+description_en: Designs low-budget, reversible makeovers for rented and shared rooms. Triggers when the user mentions rental room styling, shared-flat design, budget soft furnishing, no-drill renovation, or feng shui for renters, or uploads room photos. Analyzes the layout from photos and produces a zone plan, shopping list, execution schedule, and a photorealistic after-render.
+category: lifestyle
+version: 1.0.0
+author: zhangfangxin
 agent_created: true
 ---
 
