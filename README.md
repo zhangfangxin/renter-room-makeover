@@ -1,5 +1,7 @@
 # renter-room-makeover 🏠
 
+[English](README_EN.md) | 中文
+
 <img src="assets/icon.svg" width="96" align="right" alt="icon">
 
 一个给**城市合租打工人**用的房间改造设计 Skill。

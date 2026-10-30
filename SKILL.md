@@ -4,9 +4,9 @@ display_name: 合租房改造设计师
 display_name_en: Rental Room Makeover
 description: 面向城市合租/出租房人群的房间改造设计技能。当用户提到租房改造、出租房布置、合租房房间设计、租房归属感、低成本软装、免打孔改造、租房风水、房间格局分析，或上传了出租屋/卧室照片希望获得布置、收纳、氛围或改造建议时使用。基于照片解读户型与格局，输出低预算、可逆免破坏、兼顾风水与环境心理学的分区改造方案、采购清单与执行计划，并能基于照片生成逼真的改造后效果图（内置生成工具直接出图，或按用户指定的平台输出多模型通用提示词）。
 description_zh: 拍张房间照片，帮你诊断格局、生成低预算免打孔的改造方案，还能直接渲染改造后的效果图，让出租屋也有归属感。
-description_en: Designs low-budget, reversible makeovers for rented and shared rooms. Triggers when the user mentions rental room styling, shared-flat design, budget soft furnishing, no-drill renovation, or feng shui for renters, or uploads room photos. Analyzes the layout from photos and produces a zone plan, shopping list, execution schedule, and a photorealistic after-render.
+description_en: Designs low-budget, reversible makeovers for rented and shared rooms. Triggers when the user mentions rental room makeover, rented bedroom styling, shared-flat or share-house design, budget soft furnishing, no-drill renovation, or feng shui for renters, or uploads room/bedroom photos. Analyzes the layout from photos and produces a zone plan, shopping list, execution schedule, and a photorealistic after-render. Works in both English and Chinese.
 category: lifestyle
-version: 1.0.0
+version: 1.1.0
 author: zhangfangxin
 agent_created: true
 ---
@@ -119,6 +119,17 @@ agent_created: true
 - **合租房要顾及室友**：涉及共用区（客厅、厨房、卫生间）的改动默认只给"个人位"方案（一个收纳篮、一个挂钩、一块地垫），不提议改公共格局。
 - **风水冲突时以居住者感受为准**：例如"床头要靠实墙"与"床只能靠窗"冲突时，用厚床头板+遮光帘做折中，并说明理由。
 - **效果图是"预期示意"不是"承诺"**：图生图可能美化现实（旧墙变新、杂物被抹掉、材质纹理与实际不同），格局与尺寸以 SVG 平面图和采购清单为准。生成结果要跟用户点明这一点，避免"照图施工"后的落差。
+
+## 多语言支持（中英双语）
+
+默认中文；用户用英文提问或明确要求英文时，全流程切英文。
+
+- **语言识别**：以用户消息的语言为准。用户打英文（或明说 "in English"）→ 输出英文；否则中文。
+- **全链路英文**：拍摄清单、信息问卷、房间档案、诊断、方案、采购清单、分期执行、退租复原清单、效果图说明全部英文。标签统一 `[L0/L1/L2/L3] [价格区间] [★portable]`，货币符随地区。
+- **货币自适应**：中文默认 ¥；英文默认按地区主流货币（美国 $、英国 £、欧元区 €、澳洲 A$），预算分档与价格区间等比换算（¥200–800 ≈ US$30–110），不硬套实时汇率。地区不确定就问。
+- **风水术语英文**：床头靠实墙 = head of bed against a solid wall；门冲床 = door facing the bed；梁压床 = beam above the bed；镜子对床 = mirror facing the bed；缺角 = missing corner。仍坚持「移动/遮挡/软化/增加」可逆原则 + 环境心理学解释，禁止绝对化断言。
+- **风格与渲染**：英文用户给英文风格名（cream / Japanese / wabi-sabi / industrial / Scandinavian / dopamine / gaming desk），渲染提示词与平台参数用英文版（`references/render-prompts.md` 已含英文模板）。
+- **四条硬约束不变**：低预算、少破坏、可带走、风水理性化，中英文都强制检查。
 
 ## 资源索引
 
